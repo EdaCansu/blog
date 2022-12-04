@@ -1,5 +1,6 @@
 package com.edacansu.business.dto;
 
+import com.edacansu.annotation.RegisterUniqueEmail;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -29,6 +30,7 @@ public class RegisterDto {
     @Email
     @Size(max = 200)
     //my special annotation will be created
+    @RegisterUniqueEmail
     private String email;
 
     @NotNull(message = "{register.passwd.validation.constraints.NutNull.message}")

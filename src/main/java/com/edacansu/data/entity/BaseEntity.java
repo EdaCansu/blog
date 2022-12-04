@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -26,6 +30,25 @@ abstract public class BaseEntity implements Serializable {
     @Column(name="created_date")
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
+    private Date systemCreatedDate;
+
+    //auditing field
+    //added by whom, when
+    @CreatedBy
+    @Column(name="created_by")
+    private String createdBy;
+
+    @CreatedDate
+    @Column(name="created_date")
     private Date createdDate;
+
+    //updated by whom, when
+    @LastModifiedBy
+    @Column(name="updated_by")
+    private String updateBy;
+
+    @LastModifiedDate
+    @Column(name="updated_date")
+    private Date updateDate;
 }
 
