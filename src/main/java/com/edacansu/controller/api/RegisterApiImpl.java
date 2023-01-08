@@ -2,6 +2,8 @@ package com.edacansu.controller.api;
 
 import com.edacansu.business.dto.RegisterDto;
 import com.edacansu.business.services.IRegisterService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,19 @@ public class RegisterApiImpl implements IRegisterApi{
     //constructor Injection
     private final IRegisterService iRegisterService;
 
+    //App Information
+    //localhost:9999/Register/app/info
+    @GetMapping("/app/info")
+    public ResponseEntity<?> getAppInformation(HttpServletRequest request, HttpServletResponse response){
+        String URI = request.getRequestURI();
+        String LOCALHOST = request.getLocalAddr();
+        String SESSION = request.getSession().toString();
 
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("uri: " + URI).append("Localhost: " + LOCALHOST).append("Session: " + SESSION);
+        String infoToString = stringBuilder.toString();
+        return ResponseEntity.ok(infoToString);
+    }
 
 
     //Create
