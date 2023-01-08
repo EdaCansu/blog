@@ -13,10 +13,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //Lombok
 @RequiredArgsConstructor
@@ -72,12 +69,19 @@ public class RegisterServiceImpl implements IRegisterService {
     @Override
     public RegisterDto getRegisterById(Long id) {
         //1.YOL
+//        Optional<RegisterEntity> registerEntityFind = iRegisterRepository.findById(id);
+//        RegisterDto registerDto = entityToDto(registerEntityFind.get());
+//        if(registerEntityFind.isPresent()){
+//            return registerDto;
+//        } else {
+//            return registerDto;
+//        }
 
         //2.YOL
-        RegisterEntity registerEntityFind=   iRegisterRepository.findById(id)
+        RegisterEntity registerEntityFind= iRegisterRepository.findById(id)
                 .orElseThrow(()->new ResourceNotFoundException(id+" nolu id bulunamadı"));
         RegisterDto registerDto=entityToDto(registerEntityFind);
-        return registerDto;
+       return registerDto;
     }
 
     //UPDATE

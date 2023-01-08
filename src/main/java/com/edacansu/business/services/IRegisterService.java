@@ -2,9 +2,11 @@ package com.edacansu.business.services;
 
 import com.edacansu.business.dto.RegisterDto;
 import com.edacansu.data.entity.RegisterEntity;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
+
 
 public interface IRegisterService {
 
