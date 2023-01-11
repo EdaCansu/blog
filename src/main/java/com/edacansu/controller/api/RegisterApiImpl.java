@@ -19,6 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("register")
+@CrossOrigin
 public class RegisterApiImpl implements IRegisterApi{
 
     //constructor Injection
